@@ -4,6 +4,7 @@ Creates fast and flexible APIs, giving clients complete control to ask for just 
 Fewer HTTP requests, flexible data querying less code to manage.
 
 - Client sending the query to the server, uses a single endpoint.
+- Unlike the manual work of updating REST APIs, GraphQL self-documents.
 
 Example:
 
