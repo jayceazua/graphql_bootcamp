@@ -12,6 +12,7 @@ Example:
 query {
   hello // request what types/ field you want...
   courseInstructor
+  course
 }
 ```
 
