@@ -1,25 +1,47 @@
-/*import myCurrentLocation, {
-  message,
-  name,
-  getGreeting
-} from './myModule'
-// import myCurrentLocation from './myModule'
+import {
+  GraphQLServer
+} from 'graphql-yoga'
 
-console.log(message)
-console.log(name)
-console.log(myCurrentLocation)
-console.log(getGreeting('Andrew'))
-*/
 
-import myAddFunction, {substract} from './math'
+// Type definitions {schema}
+const typeDefs = `
+  type Query {
+    hello: String!
+    name: String!
+    location: String!
+    bio: String!
+  }
+`
 
-console.log(myAddFunction(10, 5))
-console.log(substract(10, 5))
 
-// 1. Create a new file called math.js
-// 2. Define add function that takes two arguments and adds them up
-// 3. Define substract function that takes two arguments and substracts them
-// 4. Set up add as a default export
-// 5. Set up substract function as a named export
-// 6. import both functions into index.js
-// 7. Use both functions and print the results from each
+// Resolvers
+const resolvers = {
+  Query: {
+    hello() {
+      return 'This is my first query!'
+    },
+
+    name() {
+      return 'Jayce Azua'
+    },
+
+    location() {
+      return 'I am currently located in Miami, FL!'
+    },
+
+    bio() {
+      return 'I have two internships! I will work for a government agency in my mid 30s!'
+    }
+  }
+}
+
+
+const server = new GraphQLServer({
+  typeDefs,
+  resolvers
+})
+
+
+server.start(() => {
+  console.log("It is alive")
+})
