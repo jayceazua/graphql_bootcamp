@@ -3,13 +3,24 @@ import {
 } from 'graphql-yoga'
 
 
+/**
+ * Create query definition and resolver for each:
+ * 
+ * title - string product name
+ * price - number as float
+ * releaseYear - number as int (optional)
+ * rating - number as float (optional)
+ * inStock - boolean
+ */
+
 // Type definitions {schema}
 const typeDefs = `
   type Query {
-    hello: String!
-    name: String!
-    location: String!
-    bio: String!
+    title: String!
+    price: Float!
+    releaseYear: Int
+    rating: Float
+    inStock: Boolean!
   }
 `
 
@@ -17,31 +28,31 @@ const typeDefs = `
 // Resolvers
 const resolvers = {
   Query: {
-    hello() {
-      return 'This is my first query!'
+    title() {
+      return 'Original XBOX'
     },
-
-    name() {
-      return 'Jayce Azua'
+    price() {
+      return 2000.34
     },
-
-    location() {
-      return 'I am currently located in Miami, FL!'
+    releaseYear() {
+      return null
     },
-
-    bio() {
-      return 'I have two internships! I will work for a government agency in my mid 30s!'
-    }
+    rating() {
+      return null
+    },
+    inStock() {
+      return false
+    },
   }
 }
 
-
+// instantiate the GraphQL Server with graphql-yoga
 const server = new GraphQLServer({
   typeDefs,
   resolvers
 })
 
-
+// Start GraphQL server
 server.start(() => {
   console.log("It is alive")
 })
