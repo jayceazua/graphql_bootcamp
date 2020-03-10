@@ -6,11 +6,11 @@ import {
 /**
  * Create query definition and resolver for each:
  * 
- * title - string product name
- * price - number as float
- * releaseYear - number as int (optional)
- * rating - number as float (optional)
- * inStock - boolean
+  * title - string product name
+  * price - number as float
+  * releaseYear - number as int (optional)
+  * rating - number as float (optional)
+  * inStock - boolean
  */
 
 // Type definitions {schema}
